@@ -157,7 +157,7 @@
 		<dependency>
 			<groupId>com.amazon</groupId>
 			<artifactId>redshift.jdbc41.Driver</artifactId>
-			<version>1.1.10.1010</version>
+			<version>1.1.13.1013</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
