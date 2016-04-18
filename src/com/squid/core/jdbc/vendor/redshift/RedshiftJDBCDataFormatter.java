@@ -2,12 +2,12 @@
  * Copyright © Squid Solutions, 2016
  *
  * This file is part of Open Bouquet software.
- *  
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation (version 3 of the License).
  *
- * There is a special FOSS exception to the terms and conditions of the 
+ * There is a special FOSS exception to the terms and conditions of the
  * licenses as they are applied to this program. See LICENSE.txt in
  * the directory of this program distribution.
  *
@@ -28,17 +28,13 @@ import java.sql.Connection;
 import com.squid.core.jdbc.formatter.DataFormatter;
 import com.squid.core.jdbc.vendor.redshift.postgresql.PostgresqlJDBCDataFormatter;
 
-public class RedshiftJDBCDataFormatter
-extends PostgresqlJDBCDataFormatter {
+/*
+ * Issue with fetch size been fixed by AWS a long time ago
+ */
+public class RedshiftJDBCDataFormatter extends PostgresqlJDBCDataFormatter {
 
-	public RedshiftJDBCDataFormatter(DataFormatter formatter, Connection connection) {
-		super(formatter, connection);
-	}
-
-	@Override
-	public int getFetchSize() {
-		//JTH: 2013-11-13: issue when not set to 0 -> many network/IO exceptions
-		return 0;
-	}
+  public RedshiftJDBCDataFormatter(DataFormatter formatter, Connection connection) {
+    super(formatter, connection);
+  }
 
 }

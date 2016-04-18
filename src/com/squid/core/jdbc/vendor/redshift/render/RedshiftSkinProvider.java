@@ -28,11 +28,14 @@ import com.squid.core.database.metadata.IMetadataEngine;
 import com.squid.core.database.model.DatabaseProduct;
 import com.squid.core.domain.extensions.DateOperatorDefinition;
 import com.squid.core.domain.extensions.JSONOperatorDefinition;
+import com.squid.core.domain.extensions.RegexpOperatorDefinition;
+import com.squid.core.domain.extensions.TrimOperatorDefinition;
 import com.squid.core.domain.operators.RankOperatorDefinition;
 import com.squid.core.jdbc.vendor.redshift.postgresql.render.ANSIZeroIfNullFeatureSupport;
 import com.squid.core.jdbc.vendor.redshift.postgresql.render.PostgresSkinProvider;
 import com.squid.core.sql.db.features.IGroupingSetSupport;
 import com.squid.core.sql.db.features.IMetadataForeignKeySupport;
+import com.squid.core.sql.db.render.RegexpOperatorRenderer;
 import com.squid.core.sql.db.templates.DefaultJDBCSkin;
 import com.squid.core.sql.db.templates.ISkinProvider;
 import com.squid.core.sql.db.templates.SkinRegistry;
@@ -49,9 +52,16 @@ public class RedshiftSkinProvider extends PostgresSkinProvider {
     super();
     registerOperatorRender(DateOperatorDefinition.DATE_INTERVAL, new RedshiftDateIntervalOperatorRenderer());
     registerOperatorRender(RankOperatorDefinition.ROWNUMBER_ID, new RowNumber());
+
     registerOperatorRender(JSONOperatorDefinition.JSON_ARRAY_LENGTH, new RedshiftJSONOperatorRenderer());
     registerOperatorRender(JSONOperatorDefinition.JSON_EXTRACT_FROM_ARRAY, new RedshiftJSONOperatorRenderer());
     registerOperatorRender(JSONOperatorDefinition.JSON_EXTRACT_PATH_TEXT, new RedshiftJSONOperatorRenderer());
+    //
+    registerOperatorRender(TrimOperatorDefinition.STRING_LTRIM, new RedshiftTrimOperatorRenderer("LEADING"));
+    registerOperatorRender(TrimOperatorDefinition.STRING_RTRIM, new RedshiftTrimOperatorRenderer("TRAILING"));
+    registerOperatorRender(TrimOperatorDefinition.STRING_TRIM, new RedshiftTrimOperatorRenderer("BOTH"));
+    //
+    registerOperatorRender(RegexpOperatorDefinition.REGEXP_COUNT, new RegexpOperatorRenderer("REGEXP_COUNT"));
   }
 
   @Override
