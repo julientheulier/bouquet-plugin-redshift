@@ -62,6 +62,7 @@ public class RedshiftSkinProvider extends PostgresSkinProvider {
     registerOperatorRender(TrimOperatorDefinition.STRING_TRIM, new RedshiftTrimOperatorRenderer("BOTH"));
     //
     registerOperatorRender(RegexpOperatorDefinition.REGEXP_COUNT, new RegexpOperatorRenderer("REGEXP_COUNT"));
+    registerOperatorRender(RegexpOperatorDefinition.REGEXP_INSTR, new RegexpOperatorRenderer("REGEXP_INSTR"));
   }
 
   @Override
