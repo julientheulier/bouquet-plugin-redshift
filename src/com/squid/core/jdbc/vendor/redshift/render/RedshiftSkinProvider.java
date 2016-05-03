@@ -27,7 +27,7 @@ import com.squid.core.database.impl.DataSourceReliable;
 import com.squid.core.database.metadata.IMetadataEngine;
 import com.squid.core.database.model.DatabaseProduct;
 import com.squid.core.domain.extensions.DateOperatorDefinition;
-import com.squid.core.domain.extensions.JSONOperatorDefinition;
+import com.squid.core.domain.extensions.JSON.JSONOperatorDefinition;
 import com.squid.core.domain.extensions.RegexpOperatorDefinition;
 import com.squid.core.domain.extensions.TrimOperatorDefinition;
 import com.squid.core.domain.operators.RankOperatorDefinition;
