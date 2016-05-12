@@ -102,7 +102,7 @@ public class RedshiftSkinProvider extends PostgresSkinProvider {
     if (featureID == IGroupingSetSupport.ID) {
       return IGroupingSetSupport.IS_NOT_SUPPORTED;
     } else if (featureID == IMetadataForeignKeySupport.ID) {
-      return ISkinFeatureSupport.IS_NOT_SUPPORTED;
+      return ISkinFeatureSupport.IS_SUPPORTED;
     } else if (featureID == DataSourceReliable.FeatureSupport.AUTOCOMMIT) {
       return ISkinFeatureSupport.IS_NOT_SUPPORTED;
     }
