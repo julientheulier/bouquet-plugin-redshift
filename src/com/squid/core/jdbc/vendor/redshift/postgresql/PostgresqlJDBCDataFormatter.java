@@ -28,8 +28,6 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 import org.apache.commons.lang.StringUtils;
-import org.postgresql.util.PGInterval;
-import org.postgresql.util.PGobject;
 
 import com.squid.core.jdbc.formatter.DataFormatter;
 import com.squid.core.jdbc.formatter.DefaultJDBCDataFormatter;
@@ -46,12 +44,6 @@ extends DefaultJDBCDataFormatter {
 	public Object unboxJDBCObject(final Object column, final int colType) throws SQLException {
 		if (colType==Types.CHAR && column!=null) {
 			return StringUtils.stripEnd((String)column," ");
-		} else if (column instanceof PGInterval) {
-			return column.toString();
-		} else if (column instanceof PGobject) {
-			return column.toString();
-		//} else if (column instanceof java.sql.Date) {
-		//	return new Date(((java.sql.Date)column).getTime());
 		}
 		return column;
 	}
@@ -60,11 +52,6 @@ extends DefaultJDBCDataFormatter {
 	public String formatJDBCObject(final Object column, final int colType) throws SQLException {
 		if (column== null) {
 			return "";
-		}
-		if (column instanceof PGInterval) {
-			return (String) unboxJDBCObject(column, colType);
-		} else if (column instanceof PGobject) {
-			return (String) unboxJDBCObject(column, colType);
 		}
 		return super.formatJDBCObject(column,colType);
 	}

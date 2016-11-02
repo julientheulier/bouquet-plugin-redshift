@@ -1,5 +1,5 @@
 #!/bin/sh
-# now we know why we hate them...
+# install the redshift JDBC driver in maven so we can build the plugin
 #
-mvn install:install-file -DgroupId=com.amazon -DartifactId=redshift.jdbc41.Driver -Dversion=1.1.13.1013 -Dpackaging=jar -Dfile=RedshiftJDBC41-1.1.13.1013.jar -DgeneratePom=true -DlocalRepositoryPath=${WORKSPACE}/.repository
+mvn install:install-file -DgroupId=com.amazon -DartifactId=redshift.jdbc41.Driver -Dversion=1.1.17.1017 -Dpackaging=jar -Dfile=RedshiftJDBC41-1.1.17.1017.jar -DgeneratePom=true -DlocalRepositoryPath=${WORKSPACE}/.repository
 
