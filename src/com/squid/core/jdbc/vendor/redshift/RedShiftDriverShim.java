@@ -28,9 +28,14 @@ import java.sql.Driver;
 import java.sql.SQLException;
 
 import com.squid.core.database.impl.DefaultDriverShim;
+import com.squid.core.database.impl.DriverShim;
 
-public class RedShiftDriverShim extends DefaultDriverShim {
-
+public class RedShiftDriverShim extends DriverShim {
+	
+	public RedShiftDriverShim(){
+		super();
+	}
+	
 	public RedShiftDriverShim(Driver d) {
 		super(d);
 	}
