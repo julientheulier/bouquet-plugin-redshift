@@ -3,4 +3,4 @@
 #
 BASEDIR=$(dirname $0)
 
-mvn install:install-file -DgroupId=com.amazon -DartifactId=redshift.jdbc41.Driver -Dversion=1.1.17.1017 -Dpackaging=jar -Dfile=${BASEDIR}/RedshiftJDBC41-1.1.17.1017.jar -DgeneratePom=true 
+mvn install:install-file -DgroupId=com.amazon -DartifactId=redshift.jdbc41.Driver -Dversion=1.2.1.1001 -Dpackaging=jar -Dfile=${BASEDIR}/RedshiftJDBC41-1.2.1.1001.jar -DgeneratePom=true 

@@ -157,7 +157,7 @@
 		<dependency>
 			<groupId>com.amazon</groupId>
 			<artifactId>redshift.jdbc41.Driver</artifactId>
-			<version>1.1.17.1017</version>
+			<version>1.2.1.1001</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
