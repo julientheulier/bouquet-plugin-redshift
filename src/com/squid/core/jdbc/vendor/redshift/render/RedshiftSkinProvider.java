@@ -35,6 +35,7 @@ import com.squid.core.jdbc.vendor.redshift.postgresql.render.ANSIZeroIfNullFeatu
 import com.squid.core.jdbc.vendor.redshift.postgresql.render.PostgresSkinProvider;
 import com.squid.core.sql.db.features.IGroupingSetSupport;
 import com.squid.core.sql.db.features.IMetadataForeignKeySupport;
+import com.squid.core.sql.db.features.IRollupStrategySupport;
 import com.squid.core.sql.db.render.RegexpOperatorRenderer;
 import com.squid.core.sql.db.templates.DefaultJDBCSkin;
 import com.squid.core.sql.db.templates.ISkinProvider;
@@ -105,8 +106,9 @@ public class RedshiftSkinProvider extends PostgresSkinProvider {
       return ISkinFeatureSupport.IS_SUPPORTED;
     } else if (featureID == DataSourceReliable.FeatureSupport.AUTOCOMMIT) {
       return ISkinFeatureSupport.IS_NOT_SUPPORTED;
-    }
-
+    } else if (featureID.equals(IRollupStrategySupport.ID)) {
+		return IRollupStrategySupport.OPTIMIZE_USING_TEMPORARY_STRATEGY;
+	}
     // else
     return super.getFeatureSupport(skin, featureID);
   }
