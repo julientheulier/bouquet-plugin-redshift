@@ -113,12 +113,4 @@ public class RedshiftSkinProvider extends PostgresSkinProvider {
     return super.getFeatureSupport(skin, featureID);
   }
 
-  @Override
-  public ISkinPref getPreferences(DefaultJDBCSkin skin, String featureID) {
-    if (featureID == DataSourceReliable.FeatureSupport.ROLLUP) {
-      return ISkinPref.TEMP;
-    }
-    return super.getPreferences(skin, featureID);
-  }
-
 }
