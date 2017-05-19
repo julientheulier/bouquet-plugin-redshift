@@ -49,9 +49,11 @@ public class RedshiftDateAddSubOperatorRenderer extends PostgresDateAddSubOperat
 			int unit = new Double(((DomainNumericConstant)extendedTypes[1].getDomain()).getValue()).intValue();
 			String period = ((DomainStringConstant)extendedTypes[2].getDomain()).getValue().toUpperCase();
 			if ("month".equalsIgnoreCase(period) ||"year".equalsIgnoreCase(period)) {
+				unit = unit * (getBuiltinType()==OperatorType.SUB?-1:1);
 				if ("year".equalsIgnoreCase(period)) {
 					unit = unit * 12;
 				}
+
 				txt = "ADD_MONTHS(" + args[0] + ", " + unit + ")";
 			}
 		}
