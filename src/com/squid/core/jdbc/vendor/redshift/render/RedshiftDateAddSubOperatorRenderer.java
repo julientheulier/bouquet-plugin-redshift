@@ -44,17 +44,15 @@ public class RedshiftDateAddSubOperatorRenderer extends PostgresDateAddSubOperat
 	protected String getSqlCode(SQLSkin skin, OperatorPiece piece,
 			OperatorDefinition opDef, String[] args, OperatorType type) throws RenderingException {
 		String txt = super.getSqlCode(skin, piece, opDef, args, type);
+
 		if (args.length==3) {
 			ExtendedType[] extendedTypes = getExtendedPieces(piece);
 			int unit = new Double(((DomainNumericConstant)extendedTypes[1].getDomain()).getValue()).intValue();
 			String period = ((DomainStringConstant)extendedTypes[2].getDomain()).getValue().toUpperCase();
 			if ("month".equalsIgnoreCase(period) ||"year".equalsIgnoreCase(period)) {
+				String fct = "DATEADD";
 				unit = unit * (getBuiltinType()==OperatorType.SUB?-1:1);
-				if ("year".equalsIgnoreCase(period)) {
-					unit = unit * 12;
-				}
-
-				txt = "ADD_MONTHS(" + args[0] + ", " + unit + ")";
+				txt = fct+"(" + period.toLowerCase() + ", " + unit + ", " + args[0] + ")";
 			}
 		}
 		return txt;
