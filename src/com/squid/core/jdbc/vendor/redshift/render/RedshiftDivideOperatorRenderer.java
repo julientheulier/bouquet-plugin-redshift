@@ -1,6 +1,4 @@
 package com.squid.core.jdbc.vendor.redshift.render;
-import java.sql.Types;
-
 /**
  * Fix for T3094
  */
@@ -12,10 +10,12 @@ import com.squid.core.sql.render.SQLSkin;
 
 public class RedshiftDivideOperatorRenderer extends  DivideOperatorRenderer {
 
+	/*
 	@Override
 	protected boolean isExactNumber(ExtendedType ext) {
 		return ext.isExactNumber() && (ext.getDataType()!= Types.NUMERIC && ext.getDataType()!=Types.DECIMAL);
 	}
+	 */
 
 	@Override
 	protected ExtendedType getExtendedType() {
