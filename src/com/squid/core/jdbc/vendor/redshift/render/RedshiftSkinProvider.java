@@ -31,6 +31,8 @@ import com.squid.core.domain.extensions.date.AddMonthsOperatorDefinition;
 import com.squid.core.domain.extensions.date.operator.DateOperatorDefinition;
 import com.squid.core.domain.extensions.string.regex.RegexpOperatorDefinition;
 import com.squid.core.domain.extensions.string.trim.TrimOperatorDefinition;
+import com.squid.core.domain.operators.IntrinsicOperators;
+import com.squid.core.domain.operators.OperatorDefinition;
 import com.squid.core.domain.operators.RankOperatorDefinition;
 import com.squid.core.jdbc.vendor.redshift.postgresql.render.ANSIZeroIfNullFeatureSupport;
 import com.squid.core.jdbc.vendor.redshift.postgresql.render.PostgresSkinProvider;
@@ -39,6 +41,7 @@ import com.squid.core.sql.db.features.IMetadataForeignKeySupport;
 import com.squid.core.sql.db.features.IRollupStrategySupport;
 import com.squid.core.sql.db.render.AddMonthsOperatorRenderer;
 import com.squid.core.sql.db.render.DateAddSubOperatorRenderer;
+import com.squid.core.sql.db.render.DivideOperatorRenderer;
 import com.squid.core.sql.db.render.RegexpOperatorRenderer;
 import com.squid.core.sql.db.templates.DefaultJDBCSkin;
 import com.squid.core.sql.db.templates.ISkinProvider;
@@ -53,6 +56,9 @@ public class RedshiftSkinProvider extends PostgresSkinProvider {
 
 	public RedshiftSkinProvider() {
 		super();
+		//
+		registerOperatorRender(OperatorDefinition.getExtendedId(IntrinsicOperators.DIVIDE), new DivideOperatorRenderer() ); //T3094
+
 		//
 		registerOperatorRender(DateOperatorDefinition.DATE_ADD, new RedshiftDateAddSubOperatorRenderer(DateAddSubOperatorRenderer.OperatorType.ADD));
 		registerOperatorRender(DateOperatorDefinition.DATE_SUB, new RedshiftDateAddSubOperatorRenderer(DateAddSubOperatorRenderer.OperatorType.SUB));
