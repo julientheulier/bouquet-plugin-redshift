@@ -33,8 +33,6 @@ import com.squid.core.domain.extensions.string.regex.RegexpOperatorDefinition;
 import com.squid.core.domain.extensions.string.trim.TrimOperatorDefinition;
 import com.squid.core.domain.operators.IntrinsicOperators;
 import com.squid.core.domain.operators.OperatorDefinition;
-import com.squid.core.domain.operators.RankOperatorDefinition;
-import com.squid.core.jdbc.vendor.redshift.postgresql.render.ANSIZeroIfNullFeatureSupport;
 import com.squid.core.jdbc.vendor.redshift.postgresql.render.PostgresSkinProvider;
 import com.squid.core.sql.db.features.IGroupingSetSupport;
 import com.squid.core.sql.db.features.IMetadataForeignKeySupport;
@@ -48,11 +46,8 @@ import com.squid.core.sql.db.templates.ISkinProvider;
 import com.squid.core.sql.db.templates.SkinRegistry;
 import com.squid.core.sql.render.ISkinFeatureSupport;
 import com.squid.core.sql.render.SQLSkin;
-import com.squid.core.sql.render.ZeroIfNullFeatureSupport;
 
 public class RedshiftSkinProvider extends PostgresSkinProvider {
-
-	private static final ZeroIfNullFeatureSupport zeroIfNull = new ANSIZeroIfNullFeatureSupport();
 
 	public RedshiftSkinProvider() {
 		super();
@@ -64,8 +59,8 @@ public class RedshiftSkinProvider extends PostgresSkinProvider {
 		registerOperatorRender(DateOperatorDefinition.DATE_SUB, new RedshiftDateAddSubOperatorRenderer(DateAddSubOperatorRenderer.OperatorType.SUB));
 		registerOperatorRender(AddMonthsOperatorDefinition.ADD_MONTHS, new AddMonthsOperatorRenderer());
 		registerOperatorRender(DateOperatorDefinition.DATE_INTERVAL, new RedshiftDateIntervalOperatorRenderer());
-		//
-		registerOperatorRender(RankOperatorDefinition.ROWNUMBER_ID, new RowNumber());
+		//Row number is now supported by RS
+		//registerOperatorRender(RankOperatorDefinition.ROWNUMBER_ID, new RowNumber());
 
 		registerOperatorRender(JSONOperatorDefinition.JSON_ARRAY_LENGTH, new RedshiftJSONOperatorRenderer());
 		registerOperatorRender(JSONOperatorDefinition.JSON_EXTRACT_FROM_ARRAY, new RedshiftJSONOperatorRenderer());
