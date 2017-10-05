@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>io.openbouquet</groupId>
 		<artifactId>bouquet-parent</artifactId>
-		<version>4.2.63</version>
+		<version>4.2.64</version>
 		<relativePath>../bouquet-parent/pom.xml</relativePath>
 	</parent>
 
@@ -156,8 +156,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.amazon</groupId>
-			<artifactId>redshift.jdbc41.Driver</artifactId>
-			<version>1.2.1.1001</version>
+			<artifactId>redshift.jdbc42.Driver</artifactId>
+			<version>1.2.8.1005</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
